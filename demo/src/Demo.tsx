@@ -210,6 +210,18 @@ function Demo() {
           </CircularProgressbarWithChildren>
         </Example>
 
+        <div>
+          <CircularProgressbar
+            value={60}
+            striped
+            styles={buildStyles({
+              strokeLinecap: 'butt',
+              pathColor: 'orange',
+              trailColor: '#eee',
+            })}
+          />
+        </div>
+
         {showAllExamples ? (
           <React.Fragment>
             <Example

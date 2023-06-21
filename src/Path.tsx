@@ -7,6 +7,7 @@ function Path({
   dashRatio,
   pathRadius,
   strokeWidth,
+  striped,
   style,
 }: {
   className?: string;
@@ -14,12 +15,15 @@ function Path({
   dashRatio: number;
   pathRadius: number;
   strokeWidth: number;
+  striped?: boolean;
   style?: object;
 }) {
+  const dashStyles = getDashStyle({ pathRadius, dashRatio, counterClockwise });
+
   return (
     <path
       className={className}
-      style={Object.assign({}, style, getDashStyle({ pathRadius, dashRatio, counterClockwise }))}
+      style={Object.assign({}, style, {...dashStyles, ...(striped && {stroke: 'url(#striped)'})})}
       d={getPathDescription({
         pathRadius,
         counterClockwise,

@@ -13,6 +13,7 @@ import { CircularProgressbarDefaultProps, CircularProgressbarProps } from './typ
 class CircularProgressbar extends React.Component<CircularProgressbarProps> {
   static defaultProps: CircularProgressbarDefaultProps = {
     background: false,
+    striped: false,
     backgroundPadding: 0,
     circleRatio: 1,
     classes: {
@@ -67,6 +68,7 @@ class CircularProgressbar extends React.Component<CircularProgressbarProps> {
       styles,
       strokeWidth,
       text,
+      striped,
     } = this.props;
 
     const pathRadius = this.getPathRadius();
@@ -79,6 +81,19 @@ class CircularProgressbar extends React.Component<CircularProgressbarProps> {
         viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`}
         data-test-id="CircularProgressbar"
       >
+        {striped && (
+          <defs>
+            <pattern
+              id="striped"
+              width="3"
+              height="10"
+              patternUnits="userSpaceOnUse"
+              patternTransform="rotate(40 50 50)">
+              <line stroke="#a6a6a6" strokeWidth="2px" y2="10"/>
+            </pattern>
+          </defs>
+        )}
+
         {this.props.background ? (
           <circle
             className={classes.background}
@@ -104,6 +119,7 @@ class CircularProgressbar extends React.Component<CircularProgressbarProps> {
           dashRatio={pathRatio * circleRatio}
           pathRadius={pathRadius}
           strokeWidth={strokeWidth}
+          striped={striped}
           style={styles.path}
         />
 

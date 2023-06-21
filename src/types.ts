@@ -10,6 +10,7 @@ export type CircularProgressbarStyles = {
 
 export type CircularProgressbarDefaultProps = {
   background: boolean;
+  striped: boolean;
   backgroundPadding: number;
   circleRatio: number;
   classes: {
@@ -32,6 +33,7 @@ export type CircularProgressbarDefaultProps = {
 // ignore default props.
 export type CircularProgressbarWrapperProps = {
   background?: boolean;
+  striped?: boolean;
   backgroundPadding?: number;
   circleRatio?: number;
   classes?: {
