@@ -8,6 +8,7 @@ import {
   VIEWBOX_CENTER_Y,
 } from './constants';
 import Path from './Path';
+import StripPattern from './StripPattern';
 import { CircularProgressbarDefaultProps, CircularProgressbarProps } from './types';
 
 class CircularProgressbar extends React.Component<CircularProgressbarProps> {
@@ -34,6 +35,7 @@ class CircularProgressbar extends React.Component<CircularProgressbarProps> {
       path: {},
       text: {},
       background: {},
+      strip: {},
     },
     text: '',
   };
@@ -81,18 +83,7 @@ class CircularProgressbar extends React.Component<CircularProgressbarProps> {
         viewBox={`0 0 ${VIEWBOX_WIDTH} ${VIEWBOX_HEIGHT}`}
         data-test-id="CircularProgressbar"
       >
-        {striped && (
-          <defs>
-            <pattern
-              id="striped"
-              width="3"
-              height="10"
-              patternUnits="userSpaceOnUse"
-              patternTransform="rotate(40 50 50)">
-              <line stroke="#a6a6a6" strokeWidth="2px" y2="10"/>
-            </pattern>
-          </defs>
-        )}
+        {striped && <StripPattern style={styles.strip} />}
 
         {this.props.background ? (
           <circle

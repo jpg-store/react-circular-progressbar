@@ -10,6 +10,8 @@ export default function buildStyles({
   pathTransitionDuration,
   trailColor,
   backgroundColor,
+  stripColor,
+  stripBackground,
 }: {
   rotation?: number; // Number of turns, 0-1
   strokeLinecap?: any;
@@ -20,6 +22,8 @@ export default function buildStyles({
   pathTransitionDuration?: number; // Measured in seconds
   trailColor?: string;
   backgroundColor?: string;
+  stripColor?: string;
+  stripBackground?: string;
 }): CircularProgressbarStyles {
   const rotationTransform = rotation == null ? undefined : `rotate(${rotation}turn)`;
   const rotationTransformOrigin = rotation == null ? undefined : 'center center';
@@ -46,6 +50,10 @@ export default function buildStyles({
     }),
     background: removeUndefinedValues({
       fill: backgroundColor,
+    }),
+    strip: removeUndefinedValues({
+      stroke: stripColor,
+      fill: stripBackground,
     }),
   };
 }

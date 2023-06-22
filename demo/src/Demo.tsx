@@ -211,15 +211,52 @@ function Demo() {
         </Example>
 
         <div>
-          <CircularProgressbar
-            value={60}
-            striped
+          <CircularProgressbarWithChildren
+            value={30}
             styles={buildStyles({
-              strokeLinecap: 'butt',
               pathColor: 'orange',
-              trailColor: '#eee',
+              backgroundColor: 'grey',
+              strokeLinecap: 'butt',
+              trailColor: 'transparent',
             })}
-          />
+          >
+            <div
+              style={{
+                fontSize: 18,
+                marginTop: -5,
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  marginTop: 10,
+                }}
+              >
+              <span
+                className="font-size-16 font-light"
+                style={{ lineHeight: '150%', letterSpacing: '0.02em' }}
+              >
+                NFTs Reserved
+              </span>
+              </div>
+            </div>
+            <CircularProgressbar
+              value={45}
+              striped
+              className={classNames('z-[-1] position-absolute')}
+              styles={buildStyles({
+                pathColor: 'rgba(172, 148, 250, 0.2)',
+                backgroundColor: 'transparent',
+                strokeLinecap: 'butt',
+                trailColor: 'transparent',
+                stripColor: 'blue',
+                stripBackground: 'orange',
+              })}
+            />
+          </CircularProgressbarWithChildren>
         </div>
 
         {showAllExamples ? (
